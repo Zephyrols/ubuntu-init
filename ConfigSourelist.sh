@@ -25,23 +25,8 @@ fi
 
 # 步骤2: 配置清华源
 logout "正在配置清华大学的APT源..."
-sudo tee /etc/apt/sources.list <<EOF
-# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME-backports main restricted universe multiverse
-
-# 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
-deb http://security.ubuntu.com/ubuntu/ $UBUNTU_CODENAME-security main restricted universe multiverse
-# deb-src http://security.ubuntu.com/ubuntu/ $UBUNTU_CODENAME-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME-proposed main restricted universe multiverse
-# # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ $UBUNTU_CODENAME-proposed main restricted universe multiverse
-EOF
+sudo sed -i "s/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g" /etc/apt/sources.list
+sudo sed -i "s/cn.mirrors.tuna/mirrors.tuna/g" /etc/apt/sources.list
 
 # 步骤3: 更新apt源
 logout "更新APT源... "
