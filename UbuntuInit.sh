@@ -20,20 +20,19 @@ h. 显示帮助信息
 '
 
 pushd $SCRIPT_DIR
-echo $help
+
 while true; do
+    echo $help
     read -p "请输入选项: " choice
     case $choice in
         1)
             bash ./ConfigSourelist.sh
-            echo "APT源配置完成"
             ;;
         2)
             bash ./RemoveSnap.sh
-            echo "Snap已移除"
             ;;
         3)
-            bash ./InstallConfigConda.sh
+            bash ./InstallConfigAnaconda.sh
             echo "Anaconda已安装并配置完成"
             ;;
         4)
