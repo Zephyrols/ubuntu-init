@@ -11,14 +11,13 @@ help='
 选择配置项:
 1. 配置APT源
 2. 移除Snap
-3. 安装Anaconda
+3. 安装并配置Anaconda
 4. 安装并配置zsh
 5. 安装并配置vim
 a. 全部配置
 h. 显示帮助信息
 0. 退出
 '
-
 
 pushd $SCRIPT_DIR
 echo $help
@@ -34,21 +33,21 @@ while true; do
             echo "Snap已移除"
             ;;
         3)
-            bash ./InstallAnaconda.sh
-            echo "Anaconda已安装"
+            bash ./InstallConfigConda.sh
+            echo "Anaconda已安装并配置完成"
             ;;
         4)
-            bash ./ConfigZsh.sh
+            bash ./InstallConfigZsh.sh
             echo "zsh已安装并配置完成"
             ;;
         5)
-            bash ./ConfigVim.sh
+            bash ./InstallConfigVim.sh
             echo "vim已安装并配置完成"
             ;;
         a|all)
             bash ./ConfigSourelist.sh
             bash ./RemoveSnap.sh
-            bash ./InstallAnaconda.sh
+            bash ./InstallConfigConda.sh
             bash ./ConfigZsh.sh
             bash ./ConfigVim.sh
             echo "全部配置完成"
